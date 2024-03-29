@@ -3,14 +3,12 @@ import streamlit as st
 import os
 from clarifai.client.model import Model
 import base64
-from dotenv import load_dotenv
 
 # Import Clarifai gRPC components
 from clarifai_grpc.channel.clarifai_channel import ClarifaiChannel
 from clarifai_grpc.grpc.api import resources_pb2, service_pb2, service_pb2_grpc
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
-load_dotenv()
 import os
 
 # Load environment variables from .env file
@@ -20,8 +18,7 @@ if "items" not in st.session_state:
 
 # Function to get clarifai PAT 
 def getKey():
-    
-    clarifai_pat_env = os.getenv("CLARIFAI_PAT")
+    clarifai_pat_env = 'CLARIFAI_PAT'
     clarifai_pat_usr = st.text_input('Clarifai PAT:', type='password')
     if clarifai_pat_env:
         pat = clarifai_pat_env
